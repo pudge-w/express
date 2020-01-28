@@ -14,6 +14,7 @@ mongoose.connect('mongodb://127.0.0.1/jingdong', function (err) {
 })
 
 router.get('/', function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   Lunbos.find({}, function (err, doc) {
     if (err) {
       res.json({
