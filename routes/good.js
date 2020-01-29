@@ -25,4 +25,23 @@ router.get('/', function (req, res, next) {
   })
 });
 
+router.get('/detail', function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  Goods.find({
+    id: req.query.id
+  }, function (err, doc) {
+    if (err) {
+      res.json({
+        status: '1',
+        msg: err.message
+      });
+    } else {
+      res.json({
+        status: '0',
+        result: doc[0]
+      })
+    }
+  })
+})
+
 module.exports = router;
