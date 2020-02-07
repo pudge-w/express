@@ -47,7 +47,8 @@ router.post('/login', function (req, res, next) {
           status: '0',
           msg: '',
           result: {
-            userName: doc.userName
+            userName: doc.userName,
+            userId: doc.userId
           }
         })
       } else {
