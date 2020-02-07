@@ -9,6 +9,26 @@ router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
+router.post('/register', function (req, res, next) {
+  var param = new Users({
+    userName: req.body.userName,
+    password: req.body.userPwd,
+    userId: Math.random().toFixed(4) * 10000,
+    cartList: []
+  })
+  param.save(function (err, res) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }
+  });
+  res.json({
+    status: '0',
+    msg: '注册成功',
+  })
+})
+
 router.post('/login', function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   var param = {
